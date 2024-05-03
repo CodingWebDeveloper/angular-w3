@@ -1,0 +1,23 @@
+<div class="note-list d-flex flex-column gap-3">
+    <div *ngFor="let note of getNotes()" (click)="this.setSelected(note.id)">
+        <div role="button"
+            class="p-2 {{this.selected === note.id ? 'border-dotted' : 'border border-3 border-dark'}} rounded-3">
+            <h6>
+                {{ note.title }}
+            </h6>
+            <p>
+                {{note.content}}
+            </p>
+        </div>
+        @if (this.selected === note.id) {
+        <div class="d-flex gap-2 mt-2">
+            <button class="btn btn-danger w-100" (click)="this.deleteNote(note.id)">
+                Delete
+            </button>
+            <button class="btn btn-warning w-100" (click)="this.editNote(note.id)">
+                Edit
+            </button>
+        </div>
+        }
+    </div>
+</div>
